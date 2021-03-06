@@ -43,6 +43,8 @@ int main(int argc, char *argv[])
     tio.c_cflag += 0;                   // ストップビット:1bit
     tio.c_cflag += 0;                   // パリティ:None
 
+    tio.c_cc[VMIN] = 10;
+
     cfsetispeed( &tio, baudRate );
     cfsetospeed( &tio, baudRate );
 
@@ -72,13 +74,13 @@ int main(int argc, char *argv[])
             send_buff[9] += send_buff[i];
         }
 
-        write(fd, send_buff, 10);
+//        write(fd, send_buff, 10);
 
         uint8_t read_buff[10];
         size_t read_len = read(fd, read_buff, 10);
         if(read_len == 10)
         {
-            if(read_buff[0] == 0xAA)
+            if(read_buff[0] == 0xA3)
             {
                 uint8_t checksum = 0;
                 for(size_t i = 1; i <= 8; i++)
