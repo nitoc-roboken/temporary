@@ -1,7 +1,7 @@
 #! /bin/bash
 
 #　バックアップする対象のディレクトリ
-TARGET_DIR="../RobotRMM"
+TARGET_DIR="/Users/sena2/git/RobotRMM"
 
 # バックアップ先の親ディレクトリ
 BASEDIR="backups"
